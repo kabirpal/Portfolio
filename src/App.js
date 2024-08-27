@@ -9,13 +9,11 @@ import design from "./assets/images/design.png";
 import code from "./assets/images/code.png";
 import consulting from "./assets/images/consulting.png";
 import project1 from "./assets/images/web1.png";
-import { useEffect, useState } from 'react';
-
-
+import { useEffect, useState } from "react";
 
 function App() {
-	const [ darkMode, setDarkMode ] = useState(false);
-	useEffect(()=>{},[darkMode])	
+	const [darkMode, setDarkMode] = useState(false);
+	useEffect(() => {}, [darkMode]);
 	return (
 		<div className={darkMode ? "dark" : ""}>
 			<main className="bg-white px-10 md:px-20 lg:px-30 dark:bg-gray-600 dark:text-white">
@@ -26,8 +24,10 @@ function App() {
 						</h1>
 						<ul className="flex items-center">
 							<li>
-								<BsFillMoonStarsFill className="cursor-pointer text-xl" 
-								onClick={()=>setDarkMode(!darkMode)}/>
+								<BsFillMoonStarsFill
+									className="cursor-pointer text-xl"
+									onClick={() => setDarkMode(!darkMode)}
+								/>
 							</li>
 							<li>
 								<a
@@ -47,11 +47,16 @@ function App() {
 							Software Engineer
 						</h3>
 						<p className="text-md py-5 leading-8 text-gray-800 md:text-xl max-w-xl mx-auto">
-							Lorem ipsum dolor, sit amet consectetur adipisicing
-							elit. Magni a cum saepe repellat, aspernatur, iusto
-							voluptate reprehenderit laborum tempora similique
-							inventore accusantium veritatis praesentium deserunt
-							aut! Ducimus itaque quia dignissimos.
+							Software Engineer Software Engineer Software
+							Engineer Software Engineer Software Engineer
+							Software Engineer Software Engineer Software
+							Engineer Software Engineer Software Engineer
+							Software Engineer
+                            Software Engineer Software Engineer Software
+							Engineer Software Engineer Software Engineer
+							Software Engineer Software Engineer Software
+							Engineer Software Engineer Software Engineer
+							Software Engineer
 						</p>
 					</div>
 					<div className="flex text-5xl justify-center text-gray-500">
@@ -86,7 +91,6 @@ function App() {
 					</div>
 
 					<div className="lg:flex justify-between mt-5">
-
 						<div className="text-center shadow-lg p-10 rounded-xl mb-4">
 							<div className="flex justify-center">
 								<img src={design} className="w-30 h-30" />
@@ -105,7 +109,7 @@ function App() {
 							<p className="text-gray-800 py-1">Illustrate</p>
 							<p className="text-gray-800 py-1">Figma</p>
 						</div>
-						
+
 						<div className="text-center shadow-lg p-10 rounded-xl mb-4">
 							<div className="flex justify-center">
 								<img src={code} className="w-30 h-30" />
@@ -124,7 +128,7 @@ function App() {
 							<p className="text-gray-800 py-1">Illustrate</p>
 							<p className="text-gray-800 py-1">Figma</p>
 						</div>
-						
+
 						<div className="text-center shadow-lg p-10 rounded-xl mb-4">
 							<div className="flex justify-center">
 								<img src={consulting} className="w-30 h-30" />
@@ -142,11 +146,9 @@ function App() {
 							<p className="text-gray-800 py-1">Photoshop</p>
 							<p className="text-gray-800 py-1">Illustrate</p>
 							<p className="text-gray-800 py-1">Figma</p>
-						
 						</div>
 					</div>
 				</section>
-
 
 				<section>
 					<div>
@@ -172,17 +174,30 @@ function App() {
 					</div>
 					<div className="py-10 lg:flex-row lg:flex-wrap lg:flex">
 						<div className="basis-1/3 flex-1 mt-5">
-							<img src={project1} className="rounded-lg object-cover w-[100%]" />
+							<img
+								src={project1}
+								className="rounded-lg object-cover w-[100%]"
+							/>
 						</div>
 
 						<div className="basis-1/3 flex-1 mt-5">
-							<img src={project1} className="rounded-lg object-cover w-[100%]" alt=""/>
+							<img
+								src={project1}
+								className="rounded-lg object-cover w-[100%]"
+								alt=""
+							/>
 						</div>
 						<div className="basis-1/3 flex-1 mt-5">
-							<img src={project1} className="rounded-lg object-cover w-[100%]"/>
+							<img
+								src={project1}
+								className="rounded-lg object-cover w-[100%]"
+							/>
 						</div>
 						<div className="basis-1/3 flex-1 mt-5">
-							<img src={project1} className="rounded-lg object-cover w-[100%]"/>
+							<img
+								src={project1}
+								className="rounded-lg object-cover w-[100%]"
+							/>
 						</div>
 					</div>
 				</section>
