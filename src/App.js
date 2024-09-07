@@ -11,9 +11,19 @@ import consulting from "./assets/images/consulting.png";
 import project1 from "./assets/images/web1.png";
 import { useEffect, useState } from "react";
 import { TypeAnimation } from 'react-type-animation';
+import { useInView } from 'react-hook-inview';
+import Project from "./components/Project";
+import info_en from './assets/data/user-info';
+import { createContext } from "react";
+import { HiOutlineCodeBracketSquare } from "react-icons/hi2";
+import ProjectCard from './components/ProjectCard';
+import AnimateWrapper from './components/animations/AnimateWrapper';
+// export const AppContext = createContext();
 
 function App() {
 	const [darkMode, setDarkMode] = useState(false);
+	let userInfo = info_en;
+	const [skillsref, inView] = useInView();
 	useEffect(() => { }, [darkMode]);
 	const openGmailWithCC = () => {
 		const ccEmail = 'kabirpal53@gmail.com';
@@ -21,6 +31,11 @@ function App() {
 		window.open(gmailLink, '_blank');
 	};
 	return (
+	// 	<AppContext.Provider
+    //   value={{
+    //     userInfo
+    //   }}
+    // >
 		<div className={darkMode ? "dark" : ""}>
 			<main className="bg-white px-10 md:px-20 lg:px-30 dark:bg-gray-800 dark:text-white">
 				<section className="min-h-screen">
@@ -103,7 +118,7 @@ function App() {
 					</div>
 
 					<div className="lg:flex justify-between mt-5">
-						<div className="text-center m-2 shadow-lg p-10 rounded-xl mb-4 w-1/3 bg-gradient-to-b from-gray-500 to-gray-700">
+						<div className="text-center m-2 shadow-lg p-10 rounded-xl mb-4 bg-gradient-to-b from-gray-500 to-gray-700 lg:w-1/3">
 							<div className="flex justify-center">
 								<img src={design} className="w-30 h-30 hover:animate-wiggle animate-infinite" />
 							</div>
@@ -121,7 +136,7 @@ function App() {
 							<p className="text-gray-300 py-1">Material UI</p>
 						</div>
 
-						<div className="text-center m-2 shadow-lg p-10 rounded-xl mb-4 w-1/3 bg-gradient-to-b from-gray-700 to-gray-500 ">
+						<div className="text-center m-2 shadow-lg p-10 rounded-xl mb-4 bg-gradient-to-b from-gray-700 to-gray-500 lg:w-1/3">
 							<div className="flex justify-center">
 								<img src={code} className="w-30 h-30 hover:animate-wiggle animate-infinite" />
 							</div>
@@ -140,7 +155,7 @@ function App() {
 							<p className="text-gray-200 py-1">RxJs</p>
 						</div>
 
-						<div className="text-center m-2 shadow-lg p-10 rounded-xl mb-4 w-1/3 bg-gradient-to-b from-gray-500 to-gray-700">
+						<div className="text-center m-2 shadow-lg p-10 rounded-xl mb-4 bg-gradient-to-b from-gray-500 to-gray-700 lg:w-1/3">
 							<div className="flex justify-center">
 								<img src={consulting} className="w-30 h-30 hover:animate-wiggle animate-infinite" />
 							</div>
@@ -159,60 +174,40 @@ function App() {
 						</div>
 					</div>
 				</section>
+				
+				<section ref={skillsref}>
+      <div>
+        <h2
+          id="projects"
+          className="text-9xl font-bold flex justify-center items-center gap-2 dark:text-white"
+        >
+          <AnimateWrapper inView={inView} effect="animate-fade-right">
+            <HiOutlineCodeBracketSquare className="text-red-800 dark:text-red-500" />
+          </AnimateWrapper>
+          <AnimateWrapper inView={inView} effect="animate-fade-left">
+            Personal Projects
+          </AnimateWrapper>
+        </h2>
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:px-16">
+          {userInfo.projects.map((project, index) => {
+            return (
+              <ProjectCard
+                key={index}
+                title={project.title}
+                description={project.description}
+                technologies={project.technologies}
+                github={project.github}
+                link={project.link}
+              />
+            );
+          })}
+        </section>
+      </div>
+    </section>
 
-				<section>
-					<div>
-						<h3 className="text-3xl py-1 animate-fade-left">Personal Projects</h3>
-						<p className="text-md py-5 leading-8 text-gray-800">
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit. Eaque id accusamus repellat aspernatur ratione
-							ut omnis deserunt fuga aliquam laudantium hic
-							provident, nobis excepturi, dolores reiciendis ullam
-							praesentium culpa nulla?Lorem ipsum dolor, sit amet
-							consectetur adipisicing elit. Eius rem numquam nihil
-							hic inventore molestiae, earum perspiciatis dolor
-							quibusdam suscipit error labore nesciunt culpa
-							aliquid eligendi dolorum alias reiciendis saepe?
-						</p>
-						<p>
-							Lorem ipsum dolor sit, amet consectetur adipisicing
-							elit. Molestias cum placeat, qui ducimus deserunt
-							voluptas mollitia vero laboriosam natus est, nobis
-							non magni blanditiis rem? Velit quisquam adipisci
-							quae asperiores?
-						</p>
-					</div>
-					<div className="py-10 lg:flex-row lg:flex-wrap lg:flex">
-						<div className="basis-1/3 flex-1 mt-5">
-							<img
-								src={project1}
-								className="rounded-lg object-cover w-[100%]"
-							/>
-						</div>
-
-						<div className="basis-1/3 flex-1 mt-5">
-							<img
-								src={project1}
-								className="rounded-lg object-cover w-[100%]"
-								alt=""
-							/>
-						</div>
-						<div className="basis-1/3 flex-1 mt-5">
-							<img
-								src={project1}
-								className="rounded-lg object-cover w-[100%]"
-							/>
-						</div>
-						<div className="basis-1/3 flex-1 mt-5">
-							<img
-								src={project1}
-								className="rounded-lg object-cover w-[100%]"
-							/>
-						</div>
-					</div>
-				</section>
 			</main>
 		</div>
+		// </AppContext.Provider>
 	);
 }
 
