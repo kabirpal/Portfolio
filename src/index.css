@@ -8,3 +8,29 @@
     font-family: "burtons";
     src: url('../public/Burtons.otf');
 }
+
+.technologies {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  .technologies::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #991b1b;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  .skill-button {
+    @apply inline-flex items-center justify-between gap-x-2 py-4 px-3 hover:-translate-y-1.5  duration-500 rounded-xl font-medium bg-red-100 text-red-700 dark:bg-red-800 dark:text-gray-300;
+  }
+  
